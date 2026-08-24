@@ -1,6 +1,4 @@
-# Build outputs
-*.exe
-*.dll
+# Build outputs (allow pre-compiled binary in bin/)
 *.pdb
 *.obj
 
@@ -10,7 +8,6 @@
 
 # Visual Studio / IDE
 .vs/
-bin/
 obj/
 *.user
 *.suo
