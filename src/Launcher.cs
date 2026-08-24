@@ -40,7 +40,7 @@ namespace DragonsLairLauncher
             { "index.html", new ManifestItem(2408, "fc3dc9a753709c810637c1b476ddac8c93106f598a775b112204408985312023") },
             { "favicon.ico", new ManifestItem(1150, "d4197f3689c8a3fac98465f288f31bdb88398b8dcce41c5be61870e1e6649485") },
             { "game/game.css", new ManifestItem(10717, "1f0b6f081501ad00ede5c54479beb551fc46efb2f01bc9b81d8a4720af03d6b1") },
-            { "game/game.js", new ManifestItem(416666, "d3e995383378c19025753f11c1f1ed10eac1966f29096c96158ee18f1c3f67e0") },
+            { "game/game.js", new ManifestItem(554178, "03ecbb8054cc8469b6c91be8f6c5a3a1c1d2dc6b0727406e60f842fbe63100bf") },
             { "game/death.m4a", new ManifestItem(19602, "628f5949f24d076d57cc16c7e67d79df85323b78595f98a9168a5480d837a8aa") },
             { "game/down.m4a", new ManifestItem(10928, "85313308d0d690b3b1456b5adf52d255e8cbb259ca1604527fcd507c4d3393ad") },
             { "game/intro.m4a", new ManifestItem(91959, "f8a58ddafb829aa7de20d5993b2e45da20a3924dfafcdc8ac3d538b69eee23a7") },
