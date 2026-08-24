@@ -1,9 +1,9 @@
 # ⚔️ Dragon's Lair Remastered - Standalone Arcade Launcher v1.0 by Hdg
 
-[![Download DragonsLair.exe](https://img.shields.io/badge/Download-DragonsLair.exe%20(37KB)-10B981?style=for-the-badge&logo=windows&logoColor=white)](bin/DragonsLair.exe?raw=true)
-[![Target Game](https://img.shields.io/badge/Target%20Game-dlremaster.web.app-F59E0B?style=for-the-badge&logo=google-chrome&logoColor=white)](https://dlremaster.web.app/)
+[![Download DragonsLair.exe](https://img.shields.io/badge/Download-DragonsLair.exe%20(37KB)-10B981?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)
+[![Latest Release](https://img.shields.io/github/v/release/hedgehog-nah/dragons-lair-remake-download-launcher?style=for-the-badge&color=F59E0B)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest)
+[![Target Game](https://img.shields.io/badge/Target%20Game-dlremaster.web.app-38BDF8?style=for-the-badge&logo=google-chrome&logoColor=white)](https://dlremaster.web.app/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%207%2F8%2F10%2F11-0284C7?style=for-the-badge)](https://github.com/)
-[![License](https://img.shields.io/badge/License-MIT-38BDF8?style=for-the-badge)](LICENSE)
 
 A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 High-Performance Streaming Server for **[Dragon's Lair Remastered (HTML5 Remake)](https://dlremaster.web.app/)**.
 
@@ -11,7 +11,7 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
 
 ## ⬇️ Quick Download (Pre-Compiled Binary)
 
-👉 **[Download DragonsLair.exe (v1.0)](bin/DragonsLair.exe?raw=true)** *(Direct Download, 37 KB)*
+👉 **[Download DragonsLair.exe (v1.0)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** *(Direct 1-Click Download, 37 KB)*
 
 1. Place `DragonsLair.exe` inside your game folder.
 2. Double-click `DragonsLair.exe` — it will automatically verify all assets, stream the 1080p arcade video with zero lag, and launch the game offline!
@@ -71,3 +71,4 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /optimize
 
 - **Launcher Developer**: v1.0 by **Hdg**
 - **Original Game & Remake**: **[Dragon's Lair Remastered HTML5](https://dlremaster.web.app/)**
+- **Official Releases**: **[GitHub Releases](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases)**
