@@ -9,12 +9,23 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
 
 ---
 
+## ⚖️ Legal Disclaimer & Copyright Notice
+
+> [!IMPORTANT]
+> **No Copyrighted Files Bundled:**
+> - This software is strictly an **open-source launcher and asset downloader utility**.
+> - **Zero copyrighted game assets, audio files, textures, or video media are hosted, distributed, or bundled** within this repository or within `DragonsLair.exe`.
+> - All assets and media are fetched dynamically at runtime on the client machine directly from the publicly accessible web application at **[dlremaster.web.app](https://dlremaster.web.app/)**.
+> - *Dragon's Lair* and related trademarks and assets belong to their respective copyright holders (Digital Leisure Inc. / Don Bluth / Rick Dyer). This project is non-commercial, created solely for educational purposes and offline playback convenience.
+
+---
+
 ## ⬇️ Quick Download (Pre-Compiled Binary)
 
 👉 **[Download DragonsLair.exe (v1.0)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** *(Direct 1-Click Download, 37 KB)*
 
-1. Place `DragonsLair.exe` inside your game folder.
-2. Double-click `DragonsLair.exe` — it will automatically verify all assets, stream the 1080p arcade video with zero lag, and launch the game offline!
+1. Place `DragonsLair.exe` in any empty folder (e.g. `C:\Dragons Lair`).
+2. Double-click `DragonsLair.exe` — the launcher will download the missing assets directly from the public web remake, start a local zero-lag HTTP 206 server, and launch the game for seamless offline play!
 
 ---
 
@@ -47,7 +58,7 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
 │   └── favicon.ico       # Embedded application & window icon
 ├── build.bat             # 1-Click Native C# Compiler Script (Zero Visual Studio required)
 ├── .gitignore            # Git ignore rules
-└── README.md             # Project documentation
+└── README.md             # Project documentation & Legal Disclaimer
 ```
 
 ---
