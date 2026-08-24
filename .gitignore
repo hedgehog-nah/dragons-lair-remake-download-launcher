@@ -1,0 +1,16 @@
+# Build outputs
+*.exe
+*.dll
+*.pdb
+*.obj
+
+# Temporary downloads
+*.part
+*.tmp
+
+# Visual Studio / IDE
+.vs/
+bin/
+obj/
+*.user
+*.suo
