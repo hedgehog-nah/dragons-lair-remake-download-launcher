@@ -81,5 +81,6 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /optimize
 ## 📜 Credits & Links
 
 - **Launcher Developer**: v1.0 by **Hdg**
+- **Special Thanks for Testing**: **Fabrizio La Ferrara**, **Andrea Bovo**, and **Fabrizio Radica**
 - **Original Game & Remake**: **[Dragon's Lair Remastered HTML5](https://dlremaster.web.app/)**
 - **Official Releases**: **[GitHub Releases](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases)**
