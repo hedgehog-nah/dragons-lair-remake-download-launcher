@@ -1,4 +1,4 @@
-# ⚔️ Dragon's Lair Remastered - Standalone Arcade Launcher v1.0 by Hdg
+# ⚔️ Dragon's Lair Remastered - Standalone Arcade Launcher v1.1 by Hdg
 
 [![Download DragonsLair.exe](https://img.shields.io/badge/Download-DragonsLair.exe%20(37KB)-10B981?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)
 [![Latest Release](https://img.shields.io/github/v/release/hedgehog-nah/dragons-lair-remake-download-launcher?style=for-the-badge&color=F59E0B)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest)
@@ -22,7 +22,7 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
 
 ## ⬇️ Quick Download (Pre-Compiled Binary)
 
-👉 **[Download DragonsLair.exe (v1.0)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** *(Direct 1-Click Download, 37 KB)*
+👉 **[Download DragonsLair.exe (v1.1)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** *(Direct 1-Click Download, 37 KB)*
 
 1. Place `DragonsLair.exe` in any empty folder (e.g. `C:\Dragons Lair`).
 2. Double-click `DragonsLair.exe` — the launcher will download the missing assets directly from the public web remake, start a local zero-lag HTTP 206 server, and launch the game for seamless offline play!
@@ -39,7 +39,8 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
 - **Smart Dynamic Port Auto-Switching**:
   - Automatically probes port `8080`. If busy (e.g. by another web server or another instance), dynamically discovers the next free port (`8081`, `8082`, ...) without crashing or blocking.
 - **Cryptographic File Integrity Engine (SHA-256)**:
-  - Validates all 38 game assets byte-by-byte using SHA-256 hashes against original master signatures from **[dlremaster.web.app](https://dlremaster.web.app/)**.
+  - Validates game assets byte-by-byte using SHA-256 hashes against original master signatures from **[dlremaster.web.app](https://dlremaster.web.app/)**.
+  - Resilient dynamic regex patching engine for upstream JavaScript anti-piracy updates.
   - Automatic atomic downloader (`.part` staging) with live speed (MB/s) and multi-hop HTTP 302 redirect preservation for master 1080p video (405 MB).
 - **Modern Dark Arcade WPF GUI**:
   - Custom UI theme (`#0B0D14`, Amber `#F59E0B`, Cyan `#38BDF8`, Emerald `#10B981`).
@@ -80,7 +81,7 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /optimize
 
 ## 📜 Credits & Links
 
-- **Launcher Developer**: v1.0 by **Hdg**
+- **Launcher Developer**: v1.1 by **Hdg**
 - **Special Thanks for Testing**: **Fabrizio La Ferrara**, **Andrea Bovo**, and **Fabrizio Radica**
 - **Original Game & Remake**: **[Dragon's Lair Remastered HTML5](https://dlremaster.web.app/)**
 - **Official Releases**: **[GitHub Releases](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases)**

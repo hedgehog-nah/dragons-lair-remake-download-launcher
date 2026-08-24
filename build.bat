@@ -5,7 +5,7 @@ title Building DragonsLair.exe...
 
 echo ========================================================
 echo   Dragon's Lair Remastered - Build Native Executable
-echo   Version: v1.0 by Hdg
+echo   Version: v1.1 by Hdg
 echo ========================================================
 echo.
 

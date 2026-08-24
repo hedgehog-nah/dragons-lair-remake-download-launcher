@@ -121,7 +121,7 @@ namespace DragonsLairLauncher
             string xaml = @"
 <Window xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
         xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
-        Title=""Dragon's Lair Remastered - Launcher v1.0 by Hdg"" 
+        Title=""Dragon's Lair Remastered - Launcher v1.1 by Hdg"" 
         Height=""560"" Width=""740"" 
         WindowStartupLocation=""CenterScreen""
         Background=""#0B0D14"" ResizeMode=""CanMinimize"">
@@ -149,7 +149,7 @@ namespace DragonsLairLauncher
                 </Border>
                 <StackPanel VerticalAlignment=""Center"">
                     <TextBlock Text=""DRAGON'S LAIR REMASTERED"" FontSize=""20"" FontWeight=""Bold"" Foreground=""#F59E0B""/>
-                    <TextBlock Text=""v1.0 by Hdg • Offline Arcade Remake • Zero-Lag 1080p Streaming"" FontSize=""12.5"" Foreground=""#94A3B8"" Margin=""0,2,0,0""/>
+                    <TextBlock Text=""v1.1 by Hdg • Offline Arcade Remake • Zero-Lag 1080p Streaming"" FontSize=""12.5"" Foreground=""#94A3B8"" Margin=""0,2,0,0""/>
                 </StackPanel>
             </DockPanel>
         </Border>
@@ -187,7 +187,7 @@ namespace DragonsLairLauncher
         <!-- Footer Info -->
         <DockPanel Grid.Row=""4"" Margin=""2,10,2,0"" LastChildFill=""False"">
             <TextBlock Text=""100% Standalone • Pure Native C# .NET"" FontSize=""11"" Foreground=""#64748B""/>
-            <TextBlock DockPanel.Dock=""Right"" Text=""Dragon's Lair Remastered Launcher v1.0 by Hdg"" FontSize=""11"" Foreground=""#64748B""/>
+            <TextBlock DockPanel.Dock=""Right"" Text=""Dragon's Lair Remastered Launcher v1.1 by Hdg"" FontSize=""11"" Foreground=""#64748B""/>
         </DockPanel>
     </Grid>
 </Window>";
@@ -315,22 +315,44 @@ namespace DragonsLairLauncher
             if (!File.Exists(jsPath)) return;
             string code = File.ReadAllText(jsPath, Encoding.UTF8);
 
+            // Pattern 1: Asset path prefix (sets prefix variable to 'game/')
+            code = System.Text.RegularExpressions.Regex.Replace(
+                code,
+                @"let (_0x[a-f0-9]+)='';window\[[^;]+;(?=const _0x[a-f0-9]+=\[)",
+                "let $1='game/';"
+            );
+
+            // Fallback for older variations of Pattern 1
             string target1 = "?_0x566693=_0x356d1f(-0x1e6,0x3d4,-0x127,'!8W6')+_0x356d1f(0x3c3,-0xee,0x24e,'r0e)'):_0x566693='game/'";
             int idx1 = code.IndexOf(target1);
             if (idx1 != -1)
             {
                 int before1 = code.LastIndexOf("window[", idx1);
-                string piece1 = code.Substring(before1, idx1 + target1.Length - before1);
-                code = code.Replace(piece1, "_0x566693='game/'");
+                if (before1 != -1)
+                {
+                    string piece1 = code.Substring(before1, idx1 + target1.Length - before1);
+                    code = code.Replace(piece1, "_0x566693='game/'");
+                }
             }
 
+            // Pattern 2: Video src (forces element_game.src to 'game/game.webm')
+            code = System.Text.RegularExpressions.Regex.Replace(
+                code,
+                @"if\(window\['location'\][\s\S]*?\)element_game\[[\s\S]*?;else\{",
+                "if(true)element_game.src='game/game.webm';else{"
+            );
+
+            // Fallback for older variations of Pattern 2
             string target2 = "='game/game.'+'webm';else{";
             int idx2 = code.IndexOf(target2);
             if (idx2 != -1)
             {
                 int before2 = code.LastIndexOf("if(window[", idx2);
-                string piece2 = code.Substring(before2, idx2 + target2.Length - before2);
-                code = code.Replace(piece2, "if(true)element_game.src='game/game.webm';else{");
+                if (before2 != -1)
+                {
+                    string piece2 = code.Substring(before2, idx2 + target2.Length - before2);
+                    code = code.Replace(piece2, "if(true)element_game.src='game/game.webm';else{");
+                }
             }
 
             File.WriteAllText(jsPath, code, Encoding.UTF8);
