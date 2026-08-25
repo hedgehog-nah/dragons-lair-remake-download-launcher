@@ -40,7 +40,7 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
   - Automatically probes port `8080`. If busy (e.g. by another web server or another instance), dynamically discovers the next free port (`8081`, `8082`, ...) without crashing or blocking.
 - **Cryptographic File Integrity Engine (SHA-256)**:
   - Validates all 38 game assets byte-by-byte using SHA-256 hashes against original master signatures from **[dlremaster.web.app](https://dlremaster.web.app/)**.
-  - Resilient dynamic regex patching engine for upstream JavaScript anti-piracy domain check updates.
+  - Resilient universal regex patching engine for upstream JavaScript anti-piracy domain check updates.
   - Automatic atomic downloader (`.part` staging) with live speed (MB/s) and multi-hop HTTP 302 redirect preservation for master 1080p video (405 MB).
 - **Modern Dark Arcade WPF GUI**:
   - Custom UI theme (`#0B0D14`, Amber `#F59E0B`, Cyan `#38BDF8`, Emerald `#10B981`).
@@ -53,7 +53,8 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
 
 ### **v1.1** *(Current)*
 - 🐛 **Fixed Browser Black Screen Issue**: Resolved video playback failure caused by upstream JavaScript anti-piracy domain check updates on `dlremaster.web.app`.
-- ⚡ **Dynamic Regex Patching Engine**: Replaced static string matching with robust regular expressions to automatically handle obfuscated variable variations in future game script revisions.
+- ⚡ **Universal Regex Patching Engine**: Replaced static string matching with robust multi-pattern regular expressions to automatically handle obfuscated variable variations and quote differences across all game script revisions.
+- 🧹 **UTF-8 BOM Auto-Stripping**: Automatically detects and strips invisible Unicode BOM markers (`\uFEFF`) and zero-width characters that prevent JavaScript IIFE execution in strict browser environments.
 - 🔄 **Updated Master Asset Manifest**: Synchronized `game.js` SHA-256 signature and file length specifications.
 - 🎨 **UI & Metadata Refresh**: Updated window titles, header info, and status indicators.
 
