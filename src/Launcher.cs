@@ -315,14 +315,34 @@ namespace DragonsLairLauncher
             if (!File.Exists(jsPath)) return;
             string code = File.ReadAllText(jsPath, Encoding.UTF8);
 
-            // Pattern 1: Asset path prefix (sets prefix variable to 'game/')
+            // Strip any UTF-8 BOM if present
+            code = code.TrimStart('\uFEFF', '\u200B');
+
+            // 1. Universal Video Source Patch
+            code = System.Text.RegularExpressions.Regex.Replace(
+                code,
+                @"if\(window\[['""]location['""]\][\s\S]*?\)element_game\[[\s\S]*?;else\{",
+                "if(true)element_game.src='game/game.webm';else{"
+            );
+            code = System.Text.RegularExpressions.Regex.Replace(
+                code,
+                @"if\([!a-zA-Z0-9_$]+\)element_game\.src='[^']+';else\{",
+                "if(true)element_game.src='game/game.webm';else{"
+            );
+
+            // 2. Universal Asset Prefix Patch
             code = System.Text.RegularExpressions.Regex.Replace(
                 code,
                 @"let (_0x[a-f0-9]+)='';window\[[^;]+;(?=const _0x[a-f0-9]+=\[)",
                 "let $1='game/';"
             );
+            code = System.Text.RegularExpressions.Regex.Replace(
+                code,
+                @"let (_0x[a-f0-9]+)=window\[[^;]+;(?=const _0x[a-f0-9]+=\[)",
+                "let $1='game/';"
+            );
 
-            // Fallback for older variations of Pattern 1
+            // 3. Fallbacks for legacy/static variations
             string target1 = "?_0x566693=_0x356d1f(-0x1e6,0x3d4,-0x127,'!8W6')+_0x356d1f(0x3c3,-0xee,0x24e,'r0e)'):_0x566693='game/'";
             int idx1 = code.IndexOf(target1);
             if (idx1 != -1)
@@ -335,14 +355,6 @@ namespace DragonsLairLauncher
                 }
             }
 
-            // Pattern 2: Video src (forces element_game.src to 'game/game.webm')
-            code = System.Text.RegularExpressions.Regex.Replace(
-                code,
-                @"if\(window\['location'\][\s\S]*?\)element_game\[[\s\S]*?;else\{",
-                "if(true)element_game.src='game/game.webm';else{"
-            );
-
-            // Fallback for older variations of Pattern 2
             string target2 = "='game/game.'+'webm';else{";
             int idx2 = code.IndexOf(target2);
             if (idx2 != -1)
@@ -355,7 +367,24 @@ namespace DragonsLairLauncher
                 }
             }
 
-            File.WriteAllText(jsPath, code, Encoding.UTF8);
+            File.WriteAllText(jsPath, code, new UTF8Encoding(false));
+        }
+
+        private static int FindAvailablePort(int startPort = 8080)
+        {
+            int port = startPort;
+            while (port < 65535)
+            {
+                try
+                {
+                    var listener = new System.Net.Sockets.TcpListener(IPAddress.Loopback, port);
+                    listener.Start();
+                    listener.Stop();
+                    return port;
+                }
+                catch { port++; }
+            }
+            return 8080;
         }
 
         private static void DownloadFileAtomic(string url, string dest)
