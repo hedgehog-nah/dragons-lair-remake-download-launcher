@@ -37,7 +37,7 @@ namespace DragonsLairLauncher
 
         private static Dictionary<string, ManifestItem> Manifest = new Dictionary<string, ManifestItem>(StringComparer.OrdinalIgnoreCase)
         {
-            { "index.html", new ManifestItem(2408, "fc3dc9a753709c810637c1b476ddac8c93106f598a775b112204408985312023") },
+            { "index.html", new ManifestItem(2407, "9c0378ea5dfbcf03e8c9ad5080c98f98c8c4df2e92c2b3e8e8113e11029c75bf") },
             { "favicon.ico", new ManifestItem(1150, "d4197f3689c8a3fac98465f288f31bdb88398b8dcce41c5be61870e1e6649485") },
             { "game/game.css", new ManifestItem(10717, "1f0b6f081501ad00ede5c54479beb551fc46efb2f01bc9b81d8a4720af03d6b1") },
             { "game/game.js", new ManifestItem(554178, "03ecbb8054cc8469b6c91be8f6c5a3a1c1d2dc6b0727406e60f842fbe63100bf") },
@@ -309,31 +309,51 @@ namespace DragonsLairLauncher
             }
         }
 
-        private static void PatchGameJs()
+        private static void PatchGameFiles()
         {
+            // 1. Normalize index.html (fix any script typos like gam.js -> game.js)
+            string htmlPath = Path.Combine(GameDir, "index.html");
+            if (File.Exists(htmlPath))
+            {
+                string html = File.ReadAllText(htmlPath, Encoding.UTF8);
+                if (html.Contains("game/gam.js"))
+                {
+                    html = html.Replace("game/gam.js", "game/game.js");
+                    File.WriteAllText(htmlPath, html, new UTF8Encoding(false));
+                }
+            }
+
+            // 2. Patch game.js
             string jsPath = Path.Combine(GameDir, "game", "game.js");
             if (!File.Exists(jsPath)) return;
             string code = File.ReadAllText(jsPath, Encoding.UTF8);
 
-            // 1. Strip any UTF-8 BOM if present
+            // Strip any UTF-8 BOM if present
             code = code.TrimStart('\uFEFF', '\u200B');
 
-            // 2. Video Source Patch (Universal Regex)
+            // Video Source Patch (Universal Regex)
             code = System.Text.RegularExpressions.Regex.Replace(
                 code,
                 @"if\(window\[['""]location['""]\][\s\S]*?\)element_game\[[\s\S]*?;else\{",
                 "if(true)element_game.src='game/game.webm';else{"
             );
 
-            // 3. Asset Prefix Patch (Universal Regex)
+            // Asset Prefix Patch (Universal Regex)
             code = System.Text.RegularExpressions.Regex.Replace(
                 code,
                 @"let (_0x[a-f0-9]+)='';window\[[^;]+;(?=const _0x[a-f0-9]+=\[)",
                 "let $1='game/';"
             );
 
-            // 4. Write back in clean UTF-8 without BOM
             File.WriteAllText(jsPath, code, new UTF8Encoding(false));
+
+            // Also create a fallback alias game/gam.js on disk just in case
+            try
+            {
+                string gamAlias = Path.Combine(GameDir, "game", "gam.js");
+                File.WriteAllText(gamAlias, code, new UTF8Encoding(false));
+            }
+            catch { }
         }
 
         private static int FindAvailablePort(int startPort = 8080)
@@ -445,6 +465,11 @@ namespace DragonsLairLauncher
                         if (new FileInfo(fullPath).Length < 400000) corrupted.Add(kv.Key);
                         continue;
                     }
+                    if (kv.Key.Equals("index.html", StringComparison.OrdinalIgnoreCase))
+                    {
+                        // Allow normalized index.html
+                        continue;
+                    }
                     string hash = GetFileSha256(fullPath);
                     if (!string.Equals(hash, kv.Value.Sha256, StringComparison.OrdinalIgnoreCase))
                     {
@@ -503,11 +528,11 @@ namespace DragonsLairLauncher
                         }
                     }
 
-                    PatchGameJs();
+                    PatchGameFiles();
                     Log("🔍 Final integrity recheck...");
                 }
 
-                PatchGameJs();
+                PatchGameFiles();
 
                 SetUI(100, "All files 100% verified! Game ready to play.");
                 Log("✔ All 38 game files present and 100% verified (SHA-256 OK)!");
@@ -605,7 +630,22 @@ namespace DragonsLairLauncher
                 string rawUrl = context.Request.RawUrl.Split('?')[0];
                 if (string.IsNullOrEmpty(rawUrl) || rawUrl == "/") rawUrl = "/index.html";
                 string cleanUrl = Uri.UnescapeDataString(rawUrl).TrimStart('/');
+
+                // Smart Router Fallbacks:
+                if (cleanUrl.Equals("game/gam.js", StringComparison.OrdinalIgnoreCase) ||
+                    cleanUrl.Equals("gam.js", StringComparison.OrdinalIgnoreCase))
+                {
+                    cleanUrl = "game/game.js";
+                }
+
                 string filePath = Path.Combine(GameDir, cleanUrl.Replace('/', '\\'));
+
+                // Fallback for asset missing prefix
+                if (!File.Exists(filePath))
+                {
+                    string fallbackGamePath = Path.Combine(GameDir, "game", cleanUrl.Replace('/', '\\'));
+                    if (File.Exists(fallbackGamePath)) filePath = fallbackGamePath;
+                }
 
                 if (!File.Exists(filePath))
                 {
