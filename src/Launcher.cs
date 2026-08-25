@@ -315,58 +315,24 @@ namespace DragonsLairLauncher
             if (!File.Exists(jsPath)) return;
             string code = File.ReadAllText(jsPath, Encoding.UTF8);
 
-            // Strip any UTF-8 BOM if present
+            // 1. Strip any UTF-8 BOM if present
             code = code.TrimStart('\uFEFF', '\u200B');
 
-            // 1. Universal Video Source Patch
+            // 2. Video Source Patch (Universal Regex)
             code = System.Text.RegularExpressions.Regex.Replace(
                 code,
                 @"if\(window\[['""]location['""]\][\s\S]*?\)element_game\[[\s\S]*?;else\{",
                 "if(true)element_game.src='game/game.webm';else{"
             );
-            code = System.Text.RegularExpressions.Regex.Replace(
-                code,
-                @"if\([!a-zA-Z0-9_$]+\)element_game\.src='[^']+';else\{",
-                "if(true)element_game.src='game/game.webm';else{"
-            );
 
-            // 2. Universal Asset Prefix Patch
+            // 3. Asset Prefix Patch (Universal Regex)
             code = System.Text.RegularExpressions.Regex.Replace(
                 code,
                 @"let (_0x[a-f0-9]+)='';window\[[^;]+;(?=const _0x[a-f0-9]+=\[)",
                 "let $1='game/';"
             );
-            code = System.Text.RegularExpressions.Regex.Replace(
-                code,
-                @"let (_0x[a-f0-9]+)=window\[[^;]+;(?=const _0x[a-f0-9]+=\[)",
-                "let $1='game/';"
-            );
 
-            // 3. Fallbacks for legacy/static variations
-            string target1 = "?_0x566693=_0x356d1f(-0x1e6,0x3d4,-0x127,'!8W6')+_0x356d1f(0x3c3,-0xee,0x24e,'r0e)'):_0x566693='game/'";
-            int idx1 = code.IndexOf(target1);
-            if (idx1 != -1)
-            {
-                int before1 = code.LastIndexOf("window[", idx1);
-                if (before1 != -1)
-                {
-                    string piece1 = code.Substring(before1, idx1 + target1.Length - before1);
-                    code = code.Replace(piece1, "_0x566693='game/'");
-                }
-            }
-
-            string target2 = "='game/game.'+'webm';else{";
-            int idx2 = code.IndexOf(target2);
-            if (idx2 != -1)
-            {
-                int before2 = code.LastIndexOf("if(window[", idx2);
-                if (before2 != -1)
-                {
-                    string piece2 = code.Substring(before2, idx2 + target2.Length - before2);
-                    code = code.Replace(piece2, "if(true)element_game.src='game/game.webm';else{");
-                }
-            }
-
+            // 4. Write back in clean UTF-8 without BOM
             File.WriteAllText(jsPath, code, new UTF8Encoding(false));
         }
 
