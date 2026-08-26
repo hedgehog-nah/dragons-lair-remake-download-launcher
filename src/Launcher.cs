@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -323,7 +324,7 @@ namespace DragonsLairLauncher
                 }
             }
 
-            // 2. Patch game.js
+            // 2. De-obfuscate & Patch game.js natively in memory (100% Transparent)
             string jsPath = Path.Combine(GameDir, "game", "game.js");
             if (!File.Exists(jsPath)) return;
             string code = File.ReadAllText(jsPath, Encoding.UTF8);
@@ -331,23 +332,50 @@ namespace DragonsLairLauncher
             // Strip any UTF-8 BOM if present
             code = code.TrimStart('\uFEFF', '\u200B');
 
-            // Video Source Patch (Universal Regex - matches both literal and obfuscated window property checks)
+            // Step A: In-memory simplification of 2,000+ math expressions (numbersToExpressions)
+            try
+            {
+                DataTable dt = new DataTable();
+                var mathRegex = new System.Text.RegularExpressions.Regex(
+                    @"(?<![a-zA-Z0-9_$])(-?0x[a-f0-9]+(?:\s*[\+\-\*\/]\s*-?0x[a-f0-9]+)+)(?![a-zA-Z0-9_$])",
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase
+                );
+                code = mathRegex.Replace(code, match =>
+                {
+                    try
+                    {
+                        string expr = System.Text.RegularExpressions.Regex.Replace(
+                            match.Value,
+                            @"0x([a-f0-9]+)",
+                            m => Convert.ToInt64(m.Groups[1].Value, 16).ToString(),
+                            System.Text.RegularExpressions.RegexOptions.IgnoreCase
+                        );
+                        var val = dt.Compute(expr, null);
+                        if (val != null) return val.ToString();
+                    }
+                    catch { }
+                    return match.Value;
+                });
+            }
+            catch { }
+
+            // Step B: Universal Video Source Patch (bypasses all obfuscated domain checks)
             code = System.Text.RegularExpressions.Regex.Replace(
                 code,
                 @"if\(window\[[\s\S]*?\)element_game\[[\s\S]*?;else\{",
                 "if(true)element_game.src='game/game.webm';else{"
             );
 
-            // Asset Prefix Patch (Universal Regex)
+            // Step C: Asset Prefix Patch
             code = System.Text.RegularExpressions.Regex.Replace(
                 code,
-                @"let (_0x[a-f0-9]+)='';window\[[^;]+;(?=const _0x[a-f0-9]+=\[)",
+                @"let (_0x[a-f0-9]+)=['""][^'""]*['""];(?:window\[[^;]+;)?(?=const _0x[a-f0-9]+=\[)",
                 "let $1='game/';"
             );
 
             File.WriteAllText(jsPath, code, new UTF8Encoding(false));
 
-            // Also create a fallback alias game/gam.js on disk just in case
+            // Also create fallback alias game/gam.js on disk just in case
             try
             {
                 string gamAlias = Path.Combine(GameDir, "game", "gam.js");
