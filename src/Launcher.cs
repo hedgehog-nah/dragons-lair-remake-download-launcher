@@ -374,6 +374,18 @@ namespace DragonsLairLauncher
                 "let $1='game/';"
             );
 
+            // Step D: Bypass DRM Access Code Restriction Modal (Auto-Unlock Classic & Guided modes)
+            code = System.Text.RegularExpressions.Regex.Replace(
+                code,
+                @"let\s+(_0x[a-f0-9]+)\s*=\s*!\[\];\s*return\s+async\s+function",
+                "let $1=!![];return async function"
+            );
+            code = System.Text.RegularExpressions.Regex.Replace(
+                code,
+                @"return\s*!_0x[a-f0-9]+\s*\?\s*\(element_authentication_code[\s\S]*?\)\s*:\s*!!\[\];",
+                "return true;"
+            );
+
             File.WriteAllText(jsPath, code, new UTF8Encoding(false));
 
             // Also create fallback alias game/gam.js on disk just in case
