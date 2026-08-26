@@ -37,10 +37,10 @@ namespace DragonsLairLauncher
 
         private static Dictionary<string, ManifestItem> Manifest = new Dictionary<string, ManifestItem>(StringComparer.OrdinalIgnoreCase)
         {
-            { "index.html", new ManifestItem(2407, "9c0378ea5dfbcf03e8c9ad5080c98f98c8c4df2e92c2b3e8e8113e11029c75bf") },
+            { "index.html", new ManifestItem(2791, "9789a1f8e187d280127cce14e26b1e1ea7a8070bcb268acb31d44158d81f57fa") },
             { "favicon.ico", new ManifestItem(1150, "d4197f3689c8a3fac98465f288f31bdb88398b8dcce41c5be61870e1e6649485") },
-            { "game/game.css", new ManifestItem(10717, "1f0b6f081501ad00ede5c54479beb551fc46efb2f01bc9b81d8a4720af03d6b1") },
-            { "game/game.js", new ManifestItem(554178, "03ecbb8054cc8469b6c91be8f6c5a3a1c1d2dc6b0727406e60f842fbe63100bf") },
+            { "game/game.css", new ManifestItem(11710, "e24f441a80ec3a703f2a8f338404d2886dbb8f96ce6cd2a9e1c3d1f07f37f3a9") },
+            { "game/game.js", new ManifestItem(558066, "764e5ed7195b7339771c46a92d32a4b912176d65549769c4c6057d64d9b366ac") },
             { "game/death.m4a", new ManifestItem(19602, "628f5949f24d076d57cc16c7e67d79df85323b78595f98a9168a5480d837a8aa") },
             { "game/down.m4a", new ManifestItem(10928, "85313308d0d690b3b1456b5adf52d255e8cbb259ca1604527fcd507c4d3393ad") },
             { "game/intro.m4a", new ManifestItem(91959, "f8a58ddafb829aa7de20d5993b2e45da20a3924dfafcdc8ac3d538b69eee23a7") },
@@ -331,10 +331,10 @@ namespace DragonsLairLauncher
             // Strip any UTF-8 BOM if present
             code = code.TrimStart('\uFEFF', '\u200B');
 
-            // Video Source Patch (Universal Regex)
+            // Video Source Patch (Universal Regex - matches both literal and obfuscated window property checks)
             code = System.Text.RegularExpressions.Regex.Replace(
                 code,
-                @"if\(window\[['""]location['""]\][\s\S]*?\)element_game\[[\s\S]*?;else\{",
+                @"if\(window\[[\s\S]*?\)element_game\[[\s\S]*?;else\{",
                 "if(true)element_game.src='game/game.webm';else{"
             );
 
