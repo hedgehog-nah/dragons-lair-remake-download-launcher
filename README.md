@@ -1,10 +1,6 @@
 # 🐉 Dragon's Lair Remastered - Offline Arcade Launcher
 
 <p align="center">
-  <img src="src/favicon.ico" width="72" height="72" alt="Dragon's Lair Icon" />
-</p>
-
-<p align="center">
   <b>1-Click Autonomous Launcher & Zero-Lag Local HTTP 206 Streaming Engine</b><br>
   Play the legendary Dragon's Lair HTML5 arcade remake offline in crisp 1080p @ 60 FPS.
 </p>
@@ -13,7 +9,7 @@
   <a href="https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest"><img src="https://img.shields.io/badge/Download-DragonsLair.exe-F59E0B?style=for-the-badge&logo=windows&logoColor=black" alt="Download EXE"></a>
   <img src="https://img.shields.io/badge/Version-1.0-10B981?style=for-the-badge" alt="Version 1.0">
   <img src="https://img.shields.io/badge/Platform-Windows%207%20%2F%2010%20%2F%2011-38BDF8?style=for-the-badge" alt="Windows Platform">
-  <img src="https://img.shields.io/badge/License-MIT-gray?style=for-the-badge" alt="MIT License">
+  <img src="https://img.shields.io/badge/License-Freeware-gray?style=for-the-badge" alt="Freeware License">
 </p>
 
 ---
@@ -22,7 +18,7 @@
 
 > [!IMPORTANT]
 > **No Copyrighted Files Bundled:**
-> - This software is strictly an **open-source launcher and asset downloader utility**.
+> - This software is strictly a **standalone launcher and asset downloader utility**.
 > - **Zero copyrighted game assets, audio files, textures, or video media are hosted, distributed, or bundled** within this repository or within `DragonsLair.exe`.
 > - All assets and media are fetched dynamically at runtime on the client machine directly from the publicly accessible web application at **[dlremaster.web.app](https://dlremaster.web.app/)**.
 > - *Dragon's Lair* and related trademarks and assets belong to their respective copyright holders (Digital Leisure Inc. / Don Bluth / Rick Dyer). This project is non-commercial, created solely for educational purposes and offline playback convenience.
@@ -47,19 +43,9 @@
 
 ## 🎮 How to Play
 
-1. Download **[`DragonsLair.exe`](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** and place it in any empty folder.
+1. Download **[`DragonsLair.exe`](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** and place it in any empty folder (e.g. `C:\Dragons Lair`).
 2. Double-click **`DragonsLair.exe`**.
 3. The launcher will automatically verify files, start the local streaming engine, and launch the game in your default browser!
-
----
-
-## 🛠️ Build from Source
-
-Requirements: Windows with .NET Framework 4.5+ (pre-installed on all modern Windows versions).
-
-```cmd
-build.bat
-```
 
 ---
 
@@ -73,4 +59,4 @@ build.bat
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This software is distributed as Freeware for personal, non-commercial use.
