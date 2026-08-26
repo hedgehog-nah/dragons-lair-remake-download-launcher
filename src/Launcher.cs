@@ -67,6 +67,7 @@ namespace DragonsLairLauncher
             { "game/lives.png", new ManifestItem(8718, "5023326e0913cf4e92e5c5b03f1736dd0fab7128663c98bb8e2ab9b3dee3f01b") },
             { "game/mode.png", new ManifestItem(209915, "817dae704a4b3d67c5d80baa503665ac3f55ea5e941d0d0f395baa139751d47d") },
             { "game/og.png", new ManifestItem(52830, "7d668f283a7f6baab6e79c174687148212fc7c7cb6bd06815e402311b3f8f571") },
+            { "game/red.png", new ManifestItem(230, "b10551bddc1d066a98d60d032db71b136479bb5f8721ebe8787bf4afe0b41b34") },
             { "game/right.png", new ManifestItem(6428, "2ccf257e321cb4c5eb0673ee6bfd2852261f4e106d67f9d44ac98adbf99f89f6") },
             { "game/right_red.png", new ManifestItem(6502, "a9552c7a11085c4d2d04fc0011ae8a69b47b4ad650eaebe073409df2e726b1eb") },
             { "game/right_yellow.png", new ManifestItem(6356, "b3e872399ab07846e2691ace929038759153970bfcd1e61a5ec61924ce4d0123") },
@@ -324,7 +325,7 @@ namespace DragonsLairLauncher
                 }
             }
 
-            // 2. De-obfuscate & Patch game.js natively in memory (100% Transparent)
+            // 2. De-obfuscate & Patch game.js natively in memory
             string jsPath = Path.Combine(GameDir, "game", "game.js");
             if (!File.Exists(jsPath)) return;
             string code = File.ReadAllText(jsPath, Encoding.UTF8);
@@ -563,7 +564,7 @@ namespace DragonsLairLauncher
                 PatchGameFiles();
 
                 SetUI(100, "All files 100% verified! Game ready to play.");
-                Log("✔ All 38 game files present and 100% verified (SHA-256 OK)!");
+                Log(string.Format("✔ All {0} game files present and 100% verified (SHA-256 OK)!", Manifest.Count));
 
                 StartServer();
 
