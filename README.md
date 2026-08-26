@@ -2,8 +2,8 @@
 
 [![Download DragonsLair.exe](https://img.shields.io/badge/Download-DragonsLair.exe%20(38KB)-10B981?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)
 [![Latest Release](https://img.shields.io/github/v/release/hedgehog-nah/dragons-lair-remake-download-launcher?style=for-the-badge&color=F59E0B)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest)
+[![Build Date](https://img.shields.io/badge/Build-26%20August%202026-059669?style=for-the-badge)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest)
 [![Target Game](https://img.shields.io/badge/Target%20Game-dlremaster.web.app-38BDF8?style=for-the-badge&logo=google-chrome&logoColor=white)](https://dlremaster.web.app/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%207%2F8%2F10%2F11-0284C7?style=for-the-badge)](https://github.com/)
 
 A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 High-Performance Streaming Server for **[Dragon's Lair Remastered (HTML5 Remake)](https://dlremaster.web.app/)**.
 
@@ -20,9 +20,9 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
 
 ---
 
-## ⬇️ Quick Download (Pre-Compiled Binary)
+## ⬇️ Quick Download (Pre-Compiled Binary) — *Updated: 26 August 2026*
 
-👉 **[Download DragonsLair.exe (v1.2)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** *(Direct 1-Click Download, ~38 KB)*
+👉 **[Download DragonsLair.exe (v1.2)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** *(Direct 1-Click Download, ~38 KB • Latest Build: 26 August 2026)*
 
 1. Place `DragonsLair.exe` in any empty folder (e.g. `C:\Dragons Lair`).
 2. Double-click `DragonsLair.exe` — the launcher will automatically verify or download the missing assets directly from the public web remake, start a local zero-lag HTTP 206 server, and launch the game for seamless offline play!
@@ -56,7 +56,7 @@ A lightweight, 100% standalone native Windows WPF Desktop Launcher and HTTP 206 
 
 ## 📝 Version History & Changelog
 
-### **v1.2** *(Current)*
+### **v1.2** *(Current — 26 August 2026)*
 - 🛡️ **Universal Dynamic Regex Patching Engine**:
   - Bypasses both literal domain checks and heavily obfuscated function calls (`window[_0x1e2bcc(...)][...]` / `window[_0x1fc722(...)][...]`).
   - Completely eliminates reliance on static strings like `'location'` or fixed variable names, guaranteeing 100% resilience against upstream re-obfuscation.
