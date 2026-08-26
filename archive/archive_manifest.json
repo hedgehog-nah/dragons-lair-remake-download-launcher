@@ -1,0 +1,80 @@
+{
+  "snapshots": [
+    {
+      "id": 1,
+      "timestamp": "2026-08-26 16:10:29",
+      "folder": "2026-08-26_16-10-29",
+      "isNewBuild": true,
+      "files": {
+        "index.html": {
+          "size": 2791,
+          "sha256": "9789a1f8e187d280127cce14e26b1e1ea7a8070bcb268acb31d44158d81f57fa",
+          "statusCode": 200
+        },
+        "game/game.js": {
+          "size": 558066,
+          "sha256": "764e5ed7195b7339771c46a92d32a4b912176d65549769c4c6057d64d9b366ac",
+          "statusCode": 200
+        },
+        "game/gam.js": {
+          "size": 2791,
+          "sha256": "9789a1f8e187d280127cce14e26b1e1ea7a8070bcb268acb31d44158d81f57fa",
+          "statusCode": 200
+        },
+        "game/game.css": {
+          "size": 11710,
+          "sha256": "e24f441a80ec3a703f2a8f338404d2886dbb8f96ce6cd2a9e1c3d1f07f37f3a9",
+          "statusCode": 200
+        }
+      },
+      "analysis": {
+        "size": 558066,
+        "hasBOM": false,
+        "videoExpression": "if(window[_0x1e2bcc(0xdb,0x230,'x64M',-0x3d3)]['protocol']==='file:')element_game[_0x1e2bcc(0x72e,0x933,'&A(0',0xa6e)]=_0x1e2bcc(0x3b0,0x55f,'cvd3',0x75b)+'webm';else{",
+        "assetPrefixExpression": "let _0x124825='';window[_0x7d0a9d('C9Fy',0xcd6,0x65a,0x5e6)]['protocol']==='file:'?_0x124825=_0x4b8d35('iNke',0x1031,0x1265,0xfd5)+_0x7d0a9d('Lajf',0x394,0x218,0x113):_0x124825=_0x4a27a7[_0x7d0a9d('sXxL',0x761,0x569,0x3c3)];",
+        "stringArrayFound": false,
+        "stringArrayName": null,
+        "totalLocationOccurrences": 0
+      }
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-08-24 12:00:00",
+      "folder": "2026-08-24_12-00-00",
+      "isNewBuild": true,
+      "note": "Legacy v1.0 Initial Build (Un-obfuscated domain checks, _0x566693 variable dictionary)",
+      "files": {
+        "game/game.js": {
+          "size": 554178,
+          "sha256": "03ecbb8054cc8469b6c91be8f6c5a3a1c1d2dc6b0727406e60f842fbe63100bf"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-08-25 14:30:00",
+      "folder": "2026-08-25_14-30-00",
+      "isNewBuild": true,
+      "note": "Upstream v1.1 Build (Refuso gam.js in index.html, UTF-8 BOM byte marker)",
+      "files": {
+        "game/game.js": {
+          "size": 553747,
+          "sha256": "519238d908f1bd8b02ff196e8099c7a266c2a865e23787f685c7178d6527c486"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "timestamp": "2026-08-26 10:00:00",
+      "folder": "2026-08-26_10-00-00",
+      "isNewBuild": true,
+      "note": "Intermediate 561 KB Obfuscated Variant (C:\\Users\\Hdg\\Desktop\\dl\\tempp)",
+      "files": {
+        "game/game.js": {
+          "size": 561767,
+          "sha256": "5de37d1b060fca5d35da08a1773d24552d757cad02a44730a1249d608af39da8"
+        }
+      }
+    }
+  ]
+}
