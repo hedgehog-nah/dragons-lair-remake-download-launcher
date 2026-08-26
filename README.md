@@ -29,7 +29,6 @@
 * 🚀 **1-Click Auto-Setup**: Verifies, downloads, and patches all 39 game files and 1080p master video automatically.
 * ⚡ **Zero-Lag Streaming Engine**: Built-in high-performance HTTP server with `HTTP 206 Partial Content` support for instant seeking and zero frame drops.
 * 🛡️ **Autonomous In-Memory Engine**: Evaluates 2,200+ obfuscated calculations and applies universal offline patches in memory in 20 ms.
-* 🔓 **Unlimited Play**: Automatically bypasses game access restrictions for instant, unrestricted play.
 * 🔒 **SHA-256 Verification**: Cryptographically validates asset integrity on every launch.
 * 📦 **100% Standalone**: Runs on any Windows 7, 8, 10, or 11 system with zero external runtime dependencies.
 
