@@ -18,6 +18,17 @@
 
 ---
 
+## ⚖️ Legal Disclaimer & Copyright Notice
+
+> [!IMPORTANT]
+> **No Copyrighted Files Bundled:**
+> - This software is strictly an **open-source launcher and asset downloader utility**.
+> - **Zero copyrighted game assets, audio files, textures, or video media are hosted, distributed, or bundled** within this repository or within `DragonsLair.exe`.
+> - All assets and media are fetched dynamically at runtime on the client machine directly from the publicly accessible web application at **[dlremaster.web.app](https://dlremaster.web.app/)**.
+> - *Dragon's Lair* and related trademarks and assets belong to their respective copyright holders (Digital Leisure Inc. / Don Bluth / Rick Dyer). This project is non-commercial, created solely for educational purposes and offline playback convenience.
+
+---
+
 ## ⚡ Quick Download
 
 👉 **[Download DragonsLair.exe (Pre-Compiled Binary)](https://github.com/hedgehog-nah/dragons-lair-remake-download-launcher/releases/latest/download/DragonsLair.exe)** *(~38 KB - Pure Native .NET - No installation required)*
