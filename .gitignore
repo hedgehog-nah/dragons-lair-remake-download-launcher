@@ -1,13 +1,10 @@
-# Build outputs (allow pre-compiled binary in bin/)
-*.pdb
-*.obj
-
-# Temporary downloads
-*.part
+bin/
+archive/
+tools/
+archive_daily.bat
+deobfuscate.bat
+*.clean.js
+*.log
 *.tmp
-
-# Visual Studio / IDE
-.vs/
-obj/
-*.user
-*.suo
+*.part
+game/
